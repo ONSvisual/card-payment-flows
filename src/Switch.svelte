@@ -89,7 +89,9 @@
         display: none;
         color: #fff;
     }
-
+.s{
+    display:inline-block
+}
     .s--inner button span {
         user-select: none;
         pointer-events:none;

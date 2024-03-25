@@ -53,6 +53,9 @@
   },
   "main": "index.mjs",
   "dependencies": {
-    "svelte-range-slider-pips": "^2.3.1"
+    "@onsvisual/svelte-components": "^0.1.64",
+    "svelecte": "^4.0.1",
+    "svelte-range-slider-pips": "^2.3.1",
+    "svelte-select": "^5.8.3"
   }
 }

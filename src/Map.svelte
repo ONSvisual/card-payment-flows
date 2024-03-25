@@ -4,7 +4,7 @@
 
 	const dispatch = createEventDispatcher();
 
-	export let map;
+	export let map, w;
 	export let id = "map";
 	export let location = {
 		lng: 15,
@@ -144,7 +144,7 @@
 	/>
 </svelte:head>
 
-<div bind:this={container} {id} class="map">
+<div bind:this={container} {id} {w} class="map">
 	{#if loaded}
 		<slot />
 	{/if}
@@ -156,6 +156,6 @@
 	}
 	.map {
 		width: 100%;
-		height: 100%;
+		height: 500px;
 	}
 </style>
