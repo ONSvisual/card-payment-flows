@@ -17,7 +17,8 @@
   let pcaData = (code) =>{	
 	let folder=code.substr(0,2);
 	let file=code.substr(0,4);
-	return `data2/${from}/${folder}/${file}.csv`;   //UPDATE THIS AT PUBLISHING!!!!!!!!!!!!!!!!!!!!!!
+	//https://cdn.statically.io/gh/:user/:repo/:tag/:file
+	return `https://cdn.statically.io/gh/ONSvisual/card-payment-flows/main/dist/data/${from}/${folder}/${file}.csv`//https://cdn.statically.io/gh/ONSvisual/card-payment-flows/dist/data/${from}/${folder}/${file}.csv` //`data2/${from}/${folder}/${file}.csv`;   //UPDATE THIS AT PUBLISHING!!!!!!!!!!!!!!!!!!!!!!
 }
 
   const postalBounds = {
