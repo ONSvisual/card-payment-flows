@@ -1,7 +1,7 @@
 <script>
 	import { setContext, createEventDispatcher, onMount, onDestroy } from "svelte";
 	import maplibre from "maplibre-gl";
-
+	import styleFile from "./style"
 	const dispatch = createEventDispatcher();
 
 	export let map, w;
@@ -11,18 +11,9 @@
 		lat: 45,
 		zoom: 1
 	};
-	export let style = {
-		"version": 8,
-		"sources": {},
-		"layers": [
-			{
-				"id": "background",
-				"type": "background",
-				"paint": {"background-color": "lightgrey"}
-			}
-		]
-	}; // Can be a json style definition or a url
-	export let css = null; // To set a local url for the css file (instead of CDN default)
+	export let style = {}// = styleFile // Can be a json style definition or a url
+
+	export let css = ""// "maplibre-gl.css"; // To set a local url for the css file (instead of CDN default)
 	export let options = {};
 	export let minzoom = 0;
 	export let maxzoom = 14;

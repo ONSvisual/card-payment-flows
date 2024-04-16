@@ -121,7 +121,9 @@ $: console.log("d",data )
 					  type="geojson"
 					  data={geojson}
 					  promoteId={postalBounds.code}
-					  maxzoom={13}>
+					  maxzoom={13}
+					  
+					  >
 						{#if showLayers && temp}
 					  <MapLayer
 					  	id="pca-fill"
@@ -139,7 +141,7 @@ $: console.log("d",data )
 					  		],
 					  		'fill-opacity': 0.7
 				  		}}
-							order={baseMap.key === "omt" ? "water_name" : null}
+							order={"place_town"}
 							visible={visLayers}
 				    >
 						  <MapTooltip content={`${hovered}: 

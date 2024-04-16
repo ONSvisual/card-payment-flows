@@ -1,6 +1,6 @@
 <script>
   import MyMap from "./MyMap.svelte";
-  import postcodes from "./postcodes2"; //CHANGE THIS BACK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  import postcodes from "./postcodes"; //CHANGE THIS BACK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   import Switch from "./Switch.svelte";
   import Timeseries from "./Timeseries.svelte";
   import RangeSlider from "svelte-range-slider-pips";
@@ -19,7 +19,7 @@
 
   let selected;
   //create GitHub repo DONE
-  //upload data (IN CHUNKS)
+  //upload data (IN CHUNKS) DONE
   //https://cdn.statically.io/gh/ONSvisual/card-payment-flows/dist/data/${from}/${folder}/${file}.csv
 
  // user/repo/main/dist/data...
@@ -157,12 +157,20 @@ onMount(()=>  {
   );})
 
 </script>
-<b><p>Notice: There will be a delay in the availability of the interactive map for the whole UK. Please check back later to explore Figure 4</p></b><!--NEEDS UPDATING ON PUBLISH-->
+<!-- <b><p>Notice: There will be a delay in the availability of the interactive map for the whole UK. Please check back later to explore Figure 4</p></b>NEEDS UPDATING ON PUBLISH -->
 <p bind:clientWidth={w} style="width:100%"></p>
 {#if w}
-  <Svelecte
+
+<label class="label" for="#selector0">Select a postal district by typing the first characters</label>
+<select id="selector0" bind:value={pca} on:change={() => (click = 1)}>
+  {#each keys as s, i}
+    <option class="option" value={s}>{s}</option>
+  {/each}
+</select>
+
+  <!-- <Svelecte
     options={list}
-    bind:values
+    bind:value={iconValue}
     clearable
     placeholder="Find a post code district"
     parentValue={postcode}
@@ -174,7 +182,8 @@ onMount(()=>  {
           ? "..."
           : '<svg viewBox="0 0 24 24" width=24 sizes="" class="Search__Image-sc-omporz-0 iPJOGI"><path fill="#141824" d="M17.121 15l5.598 5.597a.5.5 0 010 .707l-1.415 1.415a.5.5 0 01-.707 0L15 17.12 17.121 15z"></path><path fill="#141824" fill-rule="evenodd" d="M10.5 19a8.5 8.5 0 100-17 8.5 8.5 0 000 17zm0-2.75a5.75 5.75 0 100-11.5 5.75 5.75 0 000 11.5z" clip-rule="evenodd"></path></svg>'}</svelte:fragment
     >
-  </Svelecte><br />
+  </Svelecte><br /> -->
+<br><br>
   <!-- <AutofillSelector></AutofillSelector> -->
   <button class="toggle" class:notChosen={merchant} on:click={merchantClick}
     >Cardholders in {pca ?pca : "postal district"}</button
@@ -184,14 +193,9 @@ onMount(()=>  {
   >
   <br /><br />
   <div class="cont">
-    <!-- <label class="label" for="#selector0">Postal area</label>
-  <select id="selector0" bind:value={pca} on:change={() => (click = 1)}>
-    {#each keys as s, i}
-      <option class="option" value={s}>{s}</option>
-    {/each}
-  </select>
+ 
 
-  <Switch
+  <!--  <Switch
     bind:value={sliderValue}
     label="merchants in {pca}"
     label2="cardholders in {pca}"
@@ -262,7 +266,7 @@ onMount(()=>  {
 {/if}
 
 <style>
-  /* :global(.sv-control--selection){
+  /* :global(#selector0--selection){
     background-color: blue;
   } */
   :global(#slider) {
@@ -325,20 +329,21 @@ onMount(()=>  {
     font-weight: 400;
     color: #206095;
   }
-  :global(.sv-control) {
+  :global(#selector0) {
+  width:100%;
     border: 2px solid #206095 !important;
     cursor: pointer;
     height: 40px;
   }
-  :global(.sv-control:hover) {
+  :global(#selector0:hover) {
     box-shadow: 0 0 0 3pt #fbc900;
   }
 
-  :global(.sv-control:focus) {
+  :global(#selector0:focus) {
     box-shadow: 0 0 0 3pt #fbc900;
   }
 
-  :global(.sv-control:active) {
+  :global(#selector0:active) {
     box-shadow: 0 0 0 3pt #fbc900;
   }
 
@@ -356,5 +361,8 @@ onMount(()=>  {
 
   :global(.rangeNub) {
     background-color: #206095 !important;
+  }
+  :global(select){
+background-size: 40px 40px !important;
   }
 </style>
